@@ -1,7 +1,6 @@
 package com.secretbiology.managesmart.database;
 
 import android.content.ContentValues;
-import android.content.Context;
 import android.database.Cursor;
 import android.database.sqlite.SQLiteDatabase;
 
@@ -10,7 +9,7 @@ import com.secretbiology.managesmart.database.models.ExpenseModel;
 import java.util.ArrayList;
 import java.util.List;
 
-public class Expense extends Database {
+public class Expense {
 
     //Constants
     static String TABLE_EXPENSE = "CategoryExpense";
@@ -29,9 +28,8 @@ public class Expense extends Database {
 
     SQLiteDatabase db;
 
-    public Expense(Context context) {
-        super(context);
-        this.db = getWritableDatabase();
+    public Expense(SQLiteDatabase db) {
+        this.db = db;
     }
 
     public void add (ExpenseModel expense){

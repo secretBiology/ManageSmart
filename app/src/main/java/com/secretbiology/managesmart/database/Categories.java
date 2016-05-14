@@ -1,7 +1,6 @@
 package com.secretbiology.managesmart.database;
 
 import android.content.ContentValues;
-import android.content.Context;
 import android.database.Cursor;
 import android.database.sqlite.SQLiteDatabase;
 
@@ -10,7 +9,7 @@ import com.secretbiology.managesmart.database.models.CategoryModel;
 import java.util.ArrayList;
 import java.util.List;
 
-public class Categories extends Database {
+public class Categories {
 
     //Get Constants
     static String TABLE_CATEGORIES = "CategoryTable";
@@ -20,9 +19,8 @@ public class Categories extends Database {
 
     SQLiteDatabase db;
 
-    public Categories(Context context) {
-        super(context);
-        this.db = getWritableDatabase();
+    public Categories(SQLiteDatabase db) {
+        this.db = db;
     }
 
     public void add(String categoryName){

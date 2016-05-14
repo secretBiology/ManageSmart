@@ -7,7 +7,7 @@ import android.database.sqlite.SQLiteOpenHelper;
 public class Database extends SQLiteOpenHelper {
 
     //Constants
-    private static String DATABASE_NAME = "ManageSmart.db";
+    private static String DATABASE_NAME = "ManageSmart";
     private static int DATABASE_VERSION = 1;
 
     Context mContext;
@@ -26,7 +26,7 @@ public class Database extends SQLiteOpenHelper {
         new Tables().makeCategoryTable(db);
         new Tables().makeSubcategoryTable(db);
         new Tables().makeExpenseTable(db);
-        new Categories(mContext).add("Unsorted"); //Default category
+        new Categories(db).add("Unsorted"); //Default category
     }
 
     @Override
@@ -35,6 +35,6 @@ public class Database extends SQLiteOpenHelper {
         new Tables().makeCategoryTable(db);
         new Tables().makeSubcategoryTable(db);
         new Tables().makeExpenseTable(db);
-        new Categories(mContext).add("Unsorted"); //Default Category
+        new Categories(db).add("Unsorted"); //Default Category
     }
 }

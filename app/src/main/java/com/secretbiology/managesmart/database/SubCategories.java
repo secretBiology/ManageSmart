@@ -10,7 +10,7 @@ import com.secretbiology.managesmart.database.models.SubCategoryModel;
 import java.util.ArrayList;
 import java.util.List;
 
-public class SubCategories extends Database {
+public class SubCategories  {
 
     //Get Constants
     static String TABLE_SUBCATEGORIES = "SubCategoryTable";
@@ -19,11 +19,10 @@ public class SubCategories extends Database {
     static String SUBCAT_PARENT_ID = "subcat_parent";
 
 
-    SQLiteDatabase db;
+   SQLiteDatabase db;
 
-    public SubCategories(Context context) {
-        super(context);
-        this.db = getWritableDatabase();
+    public SubCategories (SQLiteDatabase db) {
+        this.db = db;
     }
 
     public void add(String subcategoryName, int parentID){

@@ -26,7 +26,7 @@ public class SubCategories extends Database {
         this.db = getWritableDatabase();
     }
 
-    public void make(String subcategoryName, int parentID){
+    public void add(String subcategoryName, int parentID){
         ContentValues values = new ContentValues();
         values.put(SUBCAT_NAME, subcategoryName);
         values.put(SUBCAT_PARENT_ID, parentID);
@@ -72,6 +72,11 @@ public class SubCategories extends Database {
         values.put(SUBCAT_NAME, entry.getName());
         return db.update(TABLE_SUBCATEGORIES, values, SUBCAT_ID + " = ?",
                 new String[]{String.valueOf(entry.getId())});
+    }
+
+    public void delete(SubCategoryModel subcategory) {
+        db.delete(TABLE_SUBCATEGORIES, SUBCAT_ID + " = ?", new String[] { String.valueOf(subcategory.getId()) });
+        db.close();
     }
 
 }

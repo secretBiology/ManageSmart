@@ -25,7 +25,7 @@ public class Categories extends Database {
         this.db = getWritableDatabase();
     }
 
-    public void make(String categoryName){
+    public void add(String categoryName){
         ContentValues values = new ContentValues();
         values.put(CAT_NAME, categoryName);
         db.insert(TABLE_CATEGORIES, null, values);
@@ -67,6 +67,11 @@ public class Categories extends Database {
         values.put(CAT_NAME, entry.getName());
         return db.update(TABLE_CATEGORIES, values, CAT_ID + " = ?",
                 new String[]{String.valueOf(entry.getId())});
+    }
+
+    public void delete(CategoryModel category) {
+        db.delete(TABLE_CATEGORIES, CAT_ID + " = ?", new String[] { String.valueOf(category.getId()) });
+        db.close();
     }
 
 }

@@ -25,6 +25,8 @@ public class Database extends SQLiteOpenHelper {
     public void onCreate(SQLiteDatabase db) {
         new Tables().makeCategoryTable(db);
         new Tables().makeSubcategoryTable(db);
+        new Tables().makeExpenseTable(db);
+        new Categories(mContext).add("Unsorted"); //Default category
     }
 
     @Override
@@ -32,5 +34,7 @@ public class Database extends SQLiteOpenHelper {
         new Tables().dropTables(db);
         new Tables().makeCategoryTable(db);
         new Tables().makeSubcategoryTable(db);
+        new Tables().makeExpenseTable(db);
+        new Categories(mContext).add("Unsorted"); //Default Category
     }
 }

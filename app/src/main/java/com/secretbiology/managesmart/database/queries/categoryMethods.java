@@ -1,11 +1,27 @@
 package com.secretbiology.managesmart.database.queries;
 
+import android.content.Context;
 import android.database.sqlite.SQLiteDatabase;
 
-public interface categoryMethods {
+import com.secretbiology.managesmart.database.DataBase;
 
-    void addCategoy(SQLiteDatabase db);
+public class categoryMethods extends DataBase {
 
-    void addID();
+    SQLiteDatabase writable_db;
+    SQLiteDatabase readable_db ;
+
+    public categoryMethods(Context context) {
+        super(context);
+        this.writable_db = super.getWritableDatabase();
+        this.readable_db = super.getReadableDatabase();
+    }
+
+    public void addCategoy() {
+
+    }
+
+    private void addID() {
+
+    }
 
 }

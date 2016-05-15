@@ -1,0 +1,53 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:orientation="horizontal" android:layout_width="match_parent"
+    android:layout_height="60sp"
+    android:gravity="center"
+    android:weightSum="100"
+    android:padding="5sp">
+
+    <LinearLayout
+        android:orientation="vertical"
+        android:layout_width="0dp"
+        android:layout_height="match_parent"
+        android:layout_weight="10"
+        android:gravity="center"
+        android:layout_marginRight="10sp">
+
+        <ImageView
+            android:layout_width="30sp"
+            android:layout_height="30sp"
+            android:id="@+id/cat_Add_moveUp"
+            android:src="@drawable/icon_moveup" />
+
+        <ImageView
+            android:layout_width="30sp"
+            android:layout_height="30sp"
+            android:id="@+id/cat_add_moveDown"
+            android:src="@drawable/icon_movedown" />
+    </LinearLayout>
+
+    <EditText
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:inputType="textPersonName"
+        android:text="Add Sub Category"
+        android:ems="10"
+        android:id="@+id/cat_add_name"
+        android:layout_weight="80" />
+
+    <ImageView
+        android:layout_width="30sp"
+        android:layout_height="30sp"
+        android:id="@+id/cat_add_delete"
+        android:src="@drawable/icon_close"
+        android:tint="#b71c1c" />
+
+    <ImageView
+        android:layout_width="30sp"
+        android:layout_height="30sp"
+        android:id="@+id/cat_add_item"
+        android:src="@drawable/icon_add"
+        android:scaleType="fitXY"
+        android:tint="#66bb6a" />
+</LinearLayout>

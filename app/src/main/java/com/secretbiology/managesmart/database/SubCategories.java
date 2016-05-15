@@ -21,8 +21,9 @@ public class SubCategories  {
 
    SQLiteDatabase db;
 
-    public SubCategories (SQLiteDatabase db) {
-        this.db = db;
+    public SubCategories (Context context) {
+        Database db = new Database(context);
+        this.db = db.getWritableDatabase();
     }
 
     public void add(String subcategoryName, int parentID){
@@ -30,6 +31,7 @@ public class SubCategories  {
         values.put(SUBCAT_NAME, subcategoryName);
         values.put(SUBCAT_PARENT_ID, parentID);
         db.insert(TABLE_SUBCATEGORIES, null, values);
+        db.close();
     }
 
     public SubCategoryModel get(int subcategoryID){
@@ -44,6 +46,7 @@ public class SubCategories  {
             entry = new SubCategoryModel(cursor.getInt(0),cursor.getInt(1), cursor.getString(2));
             cursor.close();
         }
+        db.close();
         return entry;
     }
 
@@ -62,6 +65,7 @@ public class SubCategories  {
             } while (cursor.moveToNext());
         }
         cursor.close();
+        db.close();
         return entryList;
     }
 
@@ -69,8 +73,10 @@ public class SubCategories  {
         ContentValues values = new ContentValues();
         values.put(SUBCAT_PARENT_ID,entry.getParentID());
         values.put(SUBCAT_NAME, entry.getName());
-        return db.update(TABLE_SUBCATEGORIES, values, SUBCAT_ID + " = ?",
+        int returnValue = db.update(TABLE_SUBCATEGORIES, values, SUBCAT_ID + " = ?",
                 new String[]{String.valueOf(entry.getId())});
+        db.close();
+        return returnValue;
     }
 
     public void delete(SubCategoryModel subcategory) {

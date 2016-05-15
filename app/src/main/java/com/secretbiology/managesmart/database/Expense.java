@@ -1,6 +1,7 @@
 package com.secretbiology.managesmart.database;
 
 import android.content.ContentValues;
+import android.content.Context;
 import android.database.Cursor;
 import android.database.sqlite.SQLiteDatabase;
 
@@ -28,8 +29,9 @@ public class Expense {
 
     SQLiteDatabase db;
 
-    public Expense(SQLiteDatabase db) {
-        this.db = db;
+    public Expense(Context context) {
+        Database db = new Database(context);
+        this.db = db.getWritableDatabase();
     }
 
     public void add (ExpenseModel expense){
@@ -46,6 +48,7 @@ public class Expense {
         values.put(EXP_METHOD, expense.getMethod());
         values.put(EXP_NOTES, expense.getNotes());
         db.insert(TABLE_EXPENSE, null, values);
+        db.close();
     }
 
     public ExpenseModel get(int expenseID){
@@ -62,6 +65,7 @@ public class Expense {
                     cursor.getString(10), cursor.getString(11));
             cursor.close();
         }
+        db.close();
         return entry;
     }
 
@@ -88,6 +92,7 @@ public class Expense {
             } while (cursor.moveToNext());
         }
         cursor.close();
+        db.close();
         return entryList;
     }
 
@@ -104,8 +109,10 @@ public class Expense {
         values.put(EXP_PLACE, expense.getPlace());
         values.put(EXP_METHOD, expense.getMethod());
         values.put(EXP_NOTES, expense.getNotes());
-        return db.update(TABLE_EXPENSE, values, EXP_ID + " = ?",
+        int returnValue = db.update(TABLE_EXPENSE, values, EXP_ID + " = ?",
                 new String[]{String.valueOf(expense.getId())});
+        db.close();
+        return returnValue;
     }
 
     public void delete(ExpenseModel expense) {

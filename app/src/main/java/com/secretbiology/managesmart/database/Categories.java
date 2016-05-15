@@ -1,6 +1,7 @@
 package com.secretbiology.managesmart.database;
 
 import android.content.ContentValues;
+import android.content.Context;
 import android.database.Cursor;
 import android.database.sqlite.SQLiteDatabase;
 
@@ -19,14 +20,16 @@ public class Categories {
 
     SQLiteDatabase db;
 
-    public Categories(SQLiteDatabase db) {
-        this.db = db;
+    public Categories(Context context) {
+        Database db = new Database(context);
+        this.db = db.getWritableDatabase();
     }
 
     public void add(String categoryName){
         ContentValues values = new ContentValues();
         values.put(CAT_NAME, categoryName);
         db.insert(TABLE_CATEGORIES, null, values);
+        db.close();
     }
 
     public CategoryModel get(int categoryID){
@@ -41,6 +44,7 @@ public class Categories {
             entry = new CategoryModel(cursor.getInt(0), cursor.getString(1));
             cursor.close();
         }
+        db.close();
         return entry;
     }
 
@@ -57,19 +61,29 @@ public class Categories {
             } while (cursor.moveToNext());
         }
         cursor.close();
+        db.close();
         return entryList;
     }
 
     public int update(CategoryModel entry) {
         ContentValues values = new ContentValues();
         values.put(CAT_NAME, entry.getName());
-        return db.update(TABLE_CATEGORIES, values, CAT_ID + " = ?",
+        int returnValue = db.update(TABLE_CATEGORIES, values, CAT_ID + " = ?",
                 new String[]{String.valueOf(entry.getId())});
+        db.close();
+        return returnValue;
     }
 
     public void delete(CategoryModel category) {
         db.delete(TABLE_CATEGORIES, CAT_ID + " = ?", new String[] { String.valueOf(category.getId()) });
         db.close();
     }
+
+    //Check if record is already ther
+    public boolean isAlreadyThere(int fieldValue) {
+        String Query = "SELECT * FROM " + TABLE_CATEGORIES + " WHERE " + CAT_ID + " = '" + fieldValue+"'";
+        Cursor cursor = db.rawQuery(Query, null);
+        if(cursor.getCount() <= 0){ cursor.close(); return false;
+        } cursor.close(); return true; }
 
 }

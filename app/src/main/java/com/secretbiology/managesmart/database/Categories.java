@@ -25,11 +25,12 @@ public class Categories {
         this.db = db.getWritableDatabase();
     }
 
-    public void add(String categoryName){
+    public int add(String categoryName){
         ContentValues values = new ContentValues();
         values.put(CAT_NAME, categoryName);
-        db.insert(TABLE_CATEGORIES, null, values);
+        int returnValue = (int) db.insert(TABLE_CATEGORIES, null, values);
         db.close();
+        return returnValue;
     }
 
     public CategoryModel get(int categoryID){
@@ -68,10 +69,8 @@ public class Categories {
     public int update(CategoryModel entry) {
         ContentValues values = new ContentValues();
         values.put(CAT_NAME, entry.getName());
-        int returnValue = db.update(TABLE_CATEGORIES, values, CAT_ID + " = ?",
+        return db.update(TABLE_CATEGORIES, values, CAT_ID + " = ?",
                 new String[]{String.valueOf(entry.getId())});
-        db.close();
-        return returnValue;
     }
 
     public void delete(CategoryModel category) {

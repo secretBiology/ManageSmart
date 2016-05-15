@@ -14,6 +14,7 @@ import android.widget.Button;
 import android.widget.EditText;
 import android.widget.Toast;
 
+import com.secretbiology.managesmart.Home;
 import com.secretbiology.managesmart.R;
 import com.secretbiology.managesmart.adapters.AddCatAdapter;
 import com.secretbiology.managesmart.database.Categories;
@@ -35,7 +36,7 @@ public class AddCategory extends AppCompatActivity {
     ArrayList<Integer> subCatIDs;
     EditText mainCat;
     TextInputLayout mainCatLayout;
-
+    int CategoryID;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -43,7 +44,7 @@ public class AddCategory extends AppCompatActivity {
 
         //Get category code
         Intent intent = getIntent();
-        int CategoryID = intent.getIntExtra(CATEGORY_CODE,0);
+        CategoryID = intent.getIntExtra(CATEGORY_CODE,0);
 
         //Set recycler view
         final RecyclerView recyclerView = (RecyclerView)findViewById(R.id.addCatgory_recycler);
@@ -180,12 +181,30 @@ public class AddCategory extends AppCompatActivity {
         addButton.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
+                if(mainCat.getText().length()==0){
+                    mainCatLayout.setError("Name can not be blank");
+                }
+                else
+                {
+                    if(CategoryID==0){
+                        CategoryID = new Categories(getBaseContext()).add(mainCat.getText().toString());
+                    }
+                    else {
+                        new Categories(getBaseContext()).update(new CategoryModel(CategoryID,mainCat.getText().toString()));
+                    }
+                }
                 for (int i=0;i<data.size();i++){
-                    if(mainCat.getText().length()==0){
-                        mainCatLayout.setError("Name can not be blank");
+                    if(subCatIDs.get(i)==0){
+                        new SubCategories(getBaseContext()).add(data.get(i),CategoryID);
+                    }
+                    else {
+                        new SubCategories(getBaseContext()).update(new SubCategoryModel(subCatIDs.get(i),CategoryID,data.get(i)));
                     }
                     Log.i("Categories ",data.get(i) + " and ID :"+subCatIDs.get(i));
                 }
+
+                startActivity(new Intent(AddCategory.this, Home.class));
+
             }
         });
 

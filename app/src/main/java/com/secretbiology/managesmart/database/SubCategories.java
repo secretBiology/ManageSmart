@@ -79,8 +79,8 @@ public class SubCategories  {
         return returnValue;
     }
 
-    public void delete(SubCategoryModel subcategory) {
-        db.delete(TABLE_SUBCATEGORIES, SUBCAT_ID + " = ?", new String[] { String.valueOf(subcategory.getId()) });
+    public void delete(int subcategoryID) {
+        db.delete(TABLE_SUBCATEGORIES, SUBCAT_ID + " = ?", new String[] { String.valueOf(subcategoryID) });
         db.close();
     }
 

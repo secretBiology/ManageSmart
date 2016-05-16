@@ -1,14 +1,13 @@
 package com.secretbiology.managesmart.activities;
 
 import android.content.Intent;
+import android.os.Bundle;
 import android.support.design.widget.TextInputLayout;
 import android.support.v7.app.AppCompatActivity;
-import android.os.Bundle;
 import android.support.v7.widget.DefaultItemAnimator;
 import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
 import android.text.Editable;
-import android.util.Log;
 import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
@@ -62,6 +61,7 @@ public class AddCategory extends AppCompatActivity {
         subCatIDs = new ArrayList<>();
 
         if(new Categories(getBaseContext()).isAlreadyThere(CategoryID)) {
+            addButton.setText("Change");
             CategoryModel category = new Categories(getBaseContext()).get(CategoryID);
             mainCat.setText(category.getName());
             //Sort all subcategories for current categories
@@ -92,12 +92,16 @@ public class AddCategory extends AppCompatActivity {
                     ArrayList<String> temp = new ArrayList<String>();
                     if (data.size() != 1) {
                         data.remove(position);
+                        if(subCatIDs.get(position)!=0){
+                            new SubCategories(getBaseContext()).delete(subCatIDs.get(position));
+                        }
                         subCatIDs.remove(position);
                         logadapter.notifyItemRemoved(position);
                         logadapter.notifyDataSetChanged();
                     } else {
                         data.remove(position);
                         data.add("Sub category 1");
+                        subCatIDs.add(0);
                         logadapter.notifyDataSetChanged();
                     }
                 }
@@ -194,15 +198,14 @@ public class AddCategory extends AppCompatActivity {
                     }
                 }
                 for (int i=0;i<data.size();i++){
-                    if(subCatIDs.get(i)==0){
-                        new SubCategories(getBaseContext()).add(data.get(i),CategoryID);
+                    if(data.get(i).length()!=0) { //Don't save edit box without any content
+                        if (subCatIDs.get(i) == 0) {
+                            new SubCategories(getBaseContext()).add(data.get(i), CategoryID);
+                        } else {
+                            new SubCategories(getBaseContext()).update(new SubCategoryModel(subCatIDs.get(i), CategoryID, data.get(i)));
+                        }
                     }
-                    else {
-                        new SubCategories(getBaseContext()).update(new SubCategoryModel(subCatIDs.get(i),CategoryID,data.get(i)));
-                    }
-                    Log.i("Categories ",data.get(i) + " and ID :"+subCatIDs.get(i));
                 }
-
                 startActivity(new Intent(AddCategory.this, Home.class));
 
             }

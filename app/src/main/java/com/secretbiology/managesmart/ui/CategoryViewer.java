@@ -22,6 +22,7 @@ import com.secretbiology.managesmart.database.models.SubCategoryModel;
 import com.secretbiology.managesmart.ui.adapters.CategoryViewerAdapter;
 
 import java.util.ArrayList;
+import java.util.Collections;
 import java.util.List;
 
 public class CategoryViewer {
@@ -38,7 +39,7 @@ public class CategoryViewer {
         this.activity = activity;
         List<CategoryModel> list = new Categories(activity.getBaseContext()).getAll();
         List<SubCategoryModel> sublist = new SubCategories(activity.getBaseContext()).getAll();
-
+        Collections.reverse(list);
         for (CategoryModel cat : list){
             groupItem.add(cat.getName());
             catIDs.add(cat.getId());

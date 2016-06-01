@@ -15,6 +15,7 @@ import android.widget.TextView;
 
 import com.secretbiology.managesmart.R;
 import com.secretbiology.managesmart.activities.AddCategory;
+import com.secretbiology.managesmart.activities.AddExpence;
 import com.secretbiology.managesmart.database.Categories;
 import com.secretbiology.managesmart.database.SubCategories;
 import com.secretbiology.managesmart.database.models.CategoryModel;
@@ -25,7 +26,7 @@ import java.util.ArrayList;
 import java.util.Collections;
 import java.util.List;
 
-public class CategoryViewer {
+public class CategoryViewer extends AddExpence {
     Activity activity;
     ArrayList<String> groupItem = new ArrayList<String>();
     ArrayList<Integer> catIDs = new ArrayList<Integer>();
@@ -76,11 +77,10 @@ public class CategoryViewer {
         expListView.setOnChildClickListener(new ExpandableListView.OnChildClickListener() {
             @Override
             public boolean onChildClick(ExpandableListView parent, View v, int groupPosition, int childPosition, long id) {
-                Log.i("here",groupPosition+"  "+childPosition);
+                Log.i("here", catIDs.get(groupPosition) + "  " + childPosition);
                 int index = parent.getFlatListPosition(ExpandableListView.getPackedPositionForChild(groupPosition, childPosition));
                 parent.setItemChecked(index, true);
                 ArrayList<String> templist = (ArrayList<String>) childItem.get(groupPosition);
-                //expenseCat.setText(templist.get(childPosition));
                 dialog.dismiss();
                 return true;
             }
@@ -90,9 +90,8 @@ public class CategoryViewer {
             @Override
             public boolean onGroupClick(ExpandableListView parent, View v, int groupPosition, long id) {
                 selectedItem =1;
-                Log.i("Parent click",groupPosition+"  "+selectedItem);
+                Log.i("Parent click", catIDs.get(groupPosition) + "  " + selectedItem);
                 dialog_text.setText(groupItem.get(groupPosition));
-                //expenseCat.setText(groupItem.get(groupPosition));
                 selectedCat = groupItem.get(groupPosition);
                 cancelDialog.setText("Select");
                 expListView.expandGroup(groupPosition);
@@ -151,5 +150,4 @@ public class CategoryViewer {
         });
 
     }
-
 }

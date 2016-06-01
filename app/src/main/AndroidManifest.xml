@@ -15,7 +15,8 @@
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
-        <activity android:name=".activities.AddCategory"></activity>
+        <activity android:name=".activities.AddCategory" />
+        <activity android:name=".activities.AddExpence"/>
     </application>
 
 </manifest>

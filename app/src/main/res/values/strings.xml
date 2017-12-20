@@ -1,3 +1,11 @@
 <resources>
-    <string name="app_name">Manage Smart</string>
+    <string name="app_name">ManageSmart</string>
+    <string name="header_subtitle">%1$d (%2$s)</string>
+
+    <string name="home">Home</string>
+
+    <string name="add_expense">Add Expense</string>
+    <string name="amount">amount</string>
+    <string name="description">description e.g. food, shopping</string>
+    <string name="medium_select"><![CDATA[ Transaction made with <b>%s</b> ]]></string>
 </resources>

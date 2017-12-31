@@ -1,4 +1,4 @@
-package com.secretbiology.managesmart.background;
+package com.secretbiology.managesmart.common;
 
 import com.secretbiology.managesmart.R;
 
@@ -45,7 +45,7 @@ public enum IconRelations {
     DICE(R.drawable.icon_die, "random, gamble, dice"),
     FOOTBALL(R.drawable.icon_football, "football, soccer, sports, ball"),
     VIDEO_GAME(R.drawable.icon_video_game, "video game, online"),
-    BUS(R.drawable.icon_bus, "bus, public transport"),
+    BUS(R.drawable.icon_bus, "bus, public transport, transportation"),
     TAXI(R.drawable.icon_taxi, "taxi, cab, uber, ola"),
     TRAM(R.drawable.icon_tram, "tram, electric"),
     METRO(R.drawable.icon_metro, "metro, train, public transport"),
@@ -72,7 +72,7 @@ public enum IconRelations {
     CARD(R.drawable.icon_card, "card, debit, credit, swipe, atm"),
     REPAIR(R.drawable.icon_repair, "repair, hammer, workshop"),
     MICROSCOPE(R.drawable.icon_microscope, "science, microscope, education"),
-    PILL(R.drawable.icon_pill, "pill, tablet, medicine"),
+    PILL(R.drawable.icon_pill, "pill, tablet, medicine, medical"),
     PARTY(R.drawable.icon_party, "party, blast, invite"),
     EMAIL(R.drawable.icon_email, "email, web, online"),
     GIFT(R.drawable.icon_gift, "gift, wrap, surprise"),
@@ -86,7 +86,9 @@ public enum IconRelations {
     WRITING(R.drawable.icon_writing, "writing, stationary, pencil, pen, paper"),
     UNKNOWN(R.drawable.icon_unknwon, "unknown, blank, question"),
     EXPENSE(R.drawable.icon_expense, "expense"),
-    NOTE(R.drawable.icon_note, "note, dollar");
+    NOTE(R.drawable.icon_note, "note, dollar"),
+    EXCLAMATION(R.drawable.icon_exclamation, "exclamation, miscellaneous, information"),
+    ADD(R.drawable.icon_add, "add new, add, extra, plus");
 
     private int icon;
     private String association;

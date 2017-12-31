@@ -1,4 +1,4 @@
-package com.secretbiology.managesmart.common;
+package com.secretbiology.managesmart.activities;
 
 import android.content.Context;
 import android.os.Bundle;
@@ -11,15 +11,10 @@ import android.view.ViewGroup;
 import android.widget.Toast;
 
 import com.secretbiology.managesmart.R;
-import com.secretbiology.managesmart.activities.AddExpense;
+import com.secretbiology.managesmart.common.AllFields;
 import com.secretbiology.managesmart.database.ExpenseMedium;
 
 import java.util.List;
-
-/**
- * Created by Rohit Suratekar on 18-12-17 for ManageSmart.
- * All code is released under MIT License.
- */
 
 public class MediumFragment extends BottomSheetDialogFragment {
 

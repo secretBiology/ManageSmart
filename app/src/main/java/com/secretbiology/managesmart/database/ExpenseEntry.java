@@ -25,9 +25,6 @@ public class ExpenseEntry {
     @ColumnInfo(name = "category")
     private int category;
 
-    @ColumnInfo(name = "subCategory")
-    private int subCategory;
-
     @ColumnInfo(name = "currency")
     private String currency;
 
@@ -77,13 +74,6 @@ public class ExpenseEntry {
         this.category = category;
     }
 
-    public int getSubCategory() {
-        return subCategory;
-    }
-
-    public void setSubCategory(int subCategory) {
-        this.subCategory = subCategory;
-    }
 
     public String getCurrency() {
         return currency;

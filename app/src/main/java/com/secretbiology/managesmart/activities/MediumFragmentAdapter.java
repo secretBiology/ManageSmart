@@ -1,4 +1,4 @@
-package com.secretbiology.managesmart.common;
+package com.secretbiology.managesmart.activities;
 
 import android.support.v7.widget.RecyclerView;
 import android.view.LayoutInflater;
@@ -13,8 +13,7 @@ import com.secretbiology.managesmart.database.ExpenseMedium;
 import java.util.List;
 
 /**
- * Created by Rohit Suratekar on 18-12-17 for ManageSmart.
- * All code is released under MIT License.
+ * Created by Dexter on 12/23/2017.
  */
 
 public class MediumFragmentAdapter extends RecyclerView.Adapter<MediumFragmentAdapter.Holder> {
@@ -66,7 +65,7 @@ public class MediumFragmentAdapter extends RecyclerView.Adapter<MediumFragmentAd
         void clicked(int position, int icon);
     }
 
-    private int getIcon(String name) {
+    public static int getIcon(String name) {
         switch (name.toLowerCase().trim()) {
             case "cash":
                 return R.drawable.icon_note;

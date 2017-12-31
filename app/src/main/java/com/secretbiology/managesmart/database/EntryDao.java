@@ -25,8 +25,8 @@ public interface EntryDao {
     @Update
     int updateEntry(ExpenseEntry entry);
 
-    @Query("UPDATE ex_entry SET category = :catID, subCategory = :subCatID")
-    void updateAllCats(int catID, int subCatID);
+    @Query("UPDATE ex_entry SET category = :catID")
+    void updateAllCats(int catID);
 
     @Query("UPDATE ex_entry SET lastModified = :timestamp")
     void allModified(Date timestamp);

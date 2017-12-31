@@ -2,11 +2,11 @@
   "formatVersion": 1,
   "database": {
     "version": 1,
-    "identityHash": "65746e0e8bebd29df5f1d4bf09b23320",
+    "identityHash": "cd32ee20ac525de607c155ac033141dd",
     "entities": [
       {
         "tableName": "ex_entry",
-        "createSql": "CREATE TABLE IF NOT EXISTS `${TABLE_NAME}` (`id` INTEGER PRIMARY KEY AUTOINCREMENT NOT NULL, `category` INTEGER NOT NULL, `subCategory` INTEGER NOT NULL, `currency` TEXT, `author` TEXT, `timestamp` INTEGER, `lastModified` INTEGER, `title` TEXT, `details` TEXT, `amount` REAL NOT NULL, `type` INTEGER NOT NULL, `medium` INTEGER NOT NULL, `location` TEXT, `filePath` TEXT)",
+        "createSql": "CREATE TABLE IF NOT EXISTS `${TABLE_NAME}` (`id` INTEGER PRIMARY KEY AUTOINCREMENT NOT NULL, `category` INTEGER NOT NULL, `currency` TEXT, `author` TEXT, `timestamp` INTEGER, `lastModified` INTEGER, `title` TEXT, `details` TEXT, `amount` REAL NOT NULL, `type` INTEGER NOT NULL, `medium` INTEGER NOT NULL, `location` TEXT, `filePath` TEXT)",
         "fields": [
           {
             "fieldPath": "id",
@@ -17,12 +17,6 @@
           {
             "fieldPath": "category",
             "columnName": "category",
-            "affinity": "INTEGER",
-            "notNull": true
-          },
-          {
-            "fieldPath": "subCategory",
-            "columnName": "subCategory",
             "affinity": "INTEGER",
             "notNull": true
           },
@@ -141,50 +135,6 @@
         "foreignKeys": []
       },
       {
-        "tableName": "ex_subcategory",
-        "createSql": "CREATE TABLE IF NOT EXISTS `${TABLE_NAME}` (`id` INTEGER PRIMARY KEY AUTOINCREMENT NOT NULL, `category` INTEGER NOT NULL, `name` TEXT, `details` TEXT, `timestamp` INTEGER)",
-        "fields": [
-          {
-            "fieldPath": "id",
-            "columnName": "id",
-            "affinity": "INTEGER",
-            "notNull": true
-          },
-          {
-            "fieldPath": "category",
-            "columnName": "category",
-            "affinity": "INTEGER",
-            "notNull": true
-          },
-          {
-            "fieldPath": "name",
-            "columnName": "name",
-            "affinity": "TEXT",
-            "notNull": false
-          },
-          {
-            "fieldPath": "details",
-            "columnName": "details",
-            "affinity": "TEXT",
-            "notNull": false
-          },
-          {
-            "fieldPath": "timestamp",
-            "columnName": "timestamp",
-            "affinity": "INTEGER",
-            "notNull": false
-          }
-        ],
-        "primaryKey": {
-          "columnNames": [
-            "id"
-          ],
-          "autoGenerate": true
-        },
-        "indices": [],
-        "foreignKeys": []
-      },
-      {
         "tableName": "ex_medium",
         "createSql": "CREATE TABLE IF NOT EXISTS `${TABLE_NAME}` (`id` INTEGER PRIMARY KEY AUTOINCREMENT NOT NULL, `name` TEXT, `details` TEXT, `timestamp` INTEGER)",
         "fields": [
@@ -225,7 +175,7 @@
     ],
     "setupQueries": [
       "CREATE TABLE IF NOT EXISTS room_master_table (id INTEGER PRIMARY KEY,identity_hash TEXT)",
-      "INSERT OR REPLACE INTO room_master_table (id,identity_hash) VALUES(42, \"65746e0e8bebd29df5f1d4bf09b23320\")"
+      "INSERT OR REPLACE INTO room_master_table (id,identity_hash) VALUES(42, \"cd32ee20ac525de607c155ac033141dd\")"
     ]
   }
 }

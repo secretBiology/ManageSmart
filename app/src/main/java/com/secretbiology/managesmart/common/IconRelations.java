@@ -3,8 +3,7 @@ package com.secretbiology.managesmart.common;
 import com.secretbiology.managesmart.R;
 
 /**
- * Created by Rohit Suratekar on 18-12-17 for ManageSmart.
- * All code is released under MIT License.
+ * Created by Dexter on 12/31/2017.
  */
 
 public enum IconRelations {

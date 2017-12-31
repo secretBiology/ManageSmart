@@ -1,4 +1,4 @@
-package com.secretbiology.managesmart.activities;
+package com.secretbiology.managesmart.activitites;
 
 import android.support.v7.widget.RecyclerView;
 import android.view.LayoutInflater;
@@ -13,7 +13,7 @@ import com.secretbiology.managesmart.database.ExpenseMedium;
 import java.util.List;
 
 /**
- * Created by Dexter on 12/23/2017.
+ * Created by Dexter on 12/31/2017.
  */
 
 public class MediumFragmentAdapter extends RecyclerView.Adapter<MediumFragmentAdapter.Holder> {

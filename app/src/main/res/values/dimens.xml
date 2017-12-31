@@ -1,9 +1,13 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
+    <dimen name="horizontal_margin">16sp</dimen>
 
-    <dimen name="ae_icon_size">30sp</dimen>
-    <dimen name="cat_icon_size">30sp</dimen>
-    <dimen name="cat_icon_holder_size">80sp</dimen>
-    <dimen name="aef_key_size">60sp</dimen>
-    <dimen name="aef_key_margin">4sp</dimen>
+    <!--Navigation Drawer-->
+    <dimen name="nav_bar_width">280sp</dimen>
+    <dimen name="nav_bar_icon_size">50sp</dimen>
+    <dimen name="nav_margin_start">16sp</dimen>
+    <dimen name="nav_margin_end">16sp</dimen>
+    <dimen name="nav_header_height">160dp</dimen>
+
+    <dimen name="select_cat_icon_size">30sp</dimen>
 </resources>

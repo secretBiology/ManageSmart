@@ -29,7 +29,6 @@ public abstract class AppData extends RoomDatabase {
             INSTANCE =
                     Room.databaseBuilder(context.getApplicationContext(), AppData.class, DATABASE_NAME)
                             .fallbackToDestructiveMigration() //Need this to remove all old databases
-                            .allowMainThreadQueries() //TODO
                             .build();
         }
         return INSTANCE;

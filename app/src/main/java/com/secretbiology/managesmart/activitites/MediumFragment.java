@@ -1,4 +1,4 @@
-package com.secretbiology.managesmart.activities;
+package com.secretbiology.managesmart.activitites;
 
 import android.content.Context;
 import android.os.Bundle;
@@ -15,6 +15,10 @@ import com.secretbiology.managesmart.common.AllFields;
 import com.secretbiology.managesmart.database.ExpenseMedium;
 
 import java.util.List;
+
+/**
+ * Created by Dexter on 12/31/2017.
+ */
 
 public class MediumFragment extends BottomSheetDialogFragment {
 

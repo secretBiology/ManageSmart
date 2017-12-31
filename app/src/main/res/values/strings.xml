@@ -1,14 +1,7 @@
 <resources>
     <string name="app_name">ManageSmart</string>
-
+    <string name="header_subtitle">%1$d (%2$s)</string>
+    <string name="home">Home</string>
     <string name="select_category">Select Category</string>
-    <string name="create_new_category">Create New category</string>
-    <string name="add_new">Add New</string>
-    <string name="add">Add</string>
-    <string name="skip">Skip</string>
-    <string name="create_category_text">What do you want to add?</string>
-    <string name="name">name</string>
-    <string name="medium_select"><![CDATA[ Transaction made with <b>%s</b> ]]></string>
-    <string name="category_details">How much did you spend in %s ?</string>
-    <string name="quick_add">Quick Add</string>
+    <string name="add_expense">Add Expense</string>
 </resources>

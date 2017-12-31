@@ -6,9 +6,6 @@ import com.secretbiology.managesmart.database.ExpenseMedium;
 
 import java.util.List;
 
-/**
- * Created by Dexter on 12/20/2017.
- */
 
 public class AllFields {
     private List<ExpenseCategory> categoryList;

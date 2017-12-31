@@ -1,12 +1,10 @@
-package com.secretbiology.managesmart.activities;
+package com.secretbiology.managesmart.activitites;
 
 import android.support.constraint.ConstraintLayout;
 import android.support.v7.widget.RecyclerView;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
-import android.view.animation.Animation;
-import android.view.animation.AnimationUtils;
 import android.widget.ImageView;
 import android.widget.TextView;
 
@@ -17,13 +15,17 @@ import com.secretbiology.managesmart.database.ExpenseCategory;
 
 import java.util.List;
 
-public class CategoryAdapter extends RecyclerView.Adapter<CategoryAdapter.Holder> {
+/**
+ * Created by Dexter on 12/31/2017.
+ */
 
-    private setOnCatClick onCatClick;
+public class CategoryFragmentAdapter extends RecyclerView.Adapter<CategoryFragmentAdapter.Holder> {
+
+    private OnCategorySelect onCategorySelect;
     private List<ExpenseCategory> categoryList;
 
-    public CategoryAdapter(List<ExpenseCategory> categoryList, setOnCatClick onCatClick) {
-        this.onCatClick = onCatClick;
+    public CategoryFragmentAdapter(List<ExpenseCategory> categoryList, OnCategorySelect onCategorySelect) {
+        this.onCategorySelect = onCategorySelect;
         this.categoryList = categoryList;
     }
 
@@ -34,25 +36,16 @@ public class CategoryAdapter extends RecyclerView.Adapter<CategoryAdapter.Holder
 
     @Override
     public void onBindViewHolder(final Holder holder, int position) {
-
-        ExpenseCategory category = categoryList.get(position);
-        Animation pulse = AnimationUtils.loadAnimation(holder.itemView.getContext(), R.anim.pulse);
-
+        final ExpenseCategory category = categoryList.get(position);
         holder.text.setText(category.getName());
+        final int ic = getIcon(category.getName());
+        holder.icon.setImageResource(ic);
         holder.layout.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                onCatClick.clicked(holder.getAdapterPosition());
+                onCategorySelect.categorySelected(category, ic);
             }
         });
-
-        if (position == categoryList.size() - 1) {
-            holder.icon.startAnimation(pulse);
-        } else {
-            holder.icon.clearAnimation();
-        }
-        holder.icon.setImageResource(getIcon(category.getName()));
-
     }
 
     @Override
@@ -68,14 +61,11 @@ public class CategoryAdapter extends RecyclerView.Adapter<CategoryAdapter.Holder
 
         Holder(View itemView) {
             super(itemView);
-            icon = itemView.findViewById(R.id.aef_cat_icon);
-            text = itemView.findViewById(R.id.aef_cat_text);
-            layout = itemView.findViewById(R.id.aef_cat_layout);
-        }
-    }
 
-    interface setOnCatClick {
-        void clicked(int position);
+            icon = itemView.findViewById(R.id.cfi_cat_icon);
+            text = itemView.findViewById(R.id.cfi_cat_text);
+            layout = itemView.findViewById(R.id.cfi_cat_layout);
+        }
     }
 
     private int getIcon(String name) {
@@ -95,5 +85,9 @@ public class CategoryAdapter extends RecyclerView.Adapter<CategoryAdapter.Holder
             }
         }
         return R.drawable.icon_unknwon;
+    }
+
+    public interface OnCategorySelect {
+        void categorySelected(ExpenseCategory category, int icon);
     }
 }
